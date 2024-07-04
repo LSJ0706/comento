@@ -1,49 +1,119 @@
-main {
+/*기본 태그 스타일*/
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Nunito", sans-serif;
+  color: #4d4b4b;
   margin: 0 auto;
+  font-size: 18px;
 }
+h2,
+h3,
+h5 {
+  color: #e0f7fa;
+  font-family: "Raleway", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
 .wrapper {
   min-width: 720px;
-  word-break: break-all;
-  margin: 0 auto;
-  width: 70%;
-}
-.profile {
-  min-width: 160px;
-  width: 25%;
-  padding: 0px;
-  margin-right: 10px;
-  float: left;
+  max-width: 1400px;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
 }
 
-.content-wrapper {
-  min-width: 320px;
-  margin-left: 30px;
-  width: 60%;
-  display: inline-block;
-  border-style: solid;
-  border-width: 0px 0px 0px 3px;
+/*프로필*/
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 200px;
+  padding: 20px;
+  background-color: #bce6fa;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
+.profile article {
+  flex-direction: column;
+  padding: 20px;
+}
+
+.profile h4 {
+  display: inline-block;
+  background-color: #8dceec;
+  color: #fff;
+  border-radius: 10px;
+  margin: 5px 5px 5px 0;
+  padding: 2px 5px;
+}
+
+.profile img {
+  flex: 1 1 20%;
+  margin-right: 10px;
+  width: 100px;
+  height: 120px;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.profile span {
+  margin-top: 10px;
+}
+
+.profile p {
+  margin: 5px 0;
+}
+
+/*컨텐트*/
+.content-wrapper {
+  min-width: 200px;
+  padding: 20px;
+  background-color: #9fdbf7;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/*테크*/
 
 .tech-stack {
-  margin-left: 10px;
-  display: inline-block;
+  margin-bottom: 40px;
 }
 
 .tech-stack p {
   display: inline-block;
-  background-color: aqua;
+  background-color: #4fc3f7;
+  color: #fff;
   border-radius: 5px;
+  margin: 5px 5px 5px 0;
+  padding: 3px 8px;
 }
+
+/*포트폴리오*/
+
 .portfolio {
-  margin-left: 10px;
+  margin-bottom: 30px;
+}
+
+.portfolio article {
+  display: flex;
+  align-items: center;
+  margin-bottom: 45px;
 }
 .portfolio img {
-  width: 200px;
+  margin-right: 10px;
+  width: 150px;
+  height: auto;
+  border-radius: 6px;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
+
 .portfolio p {
-  margin: 5px;
-}
-a {
-  text-decoration: none;
-  color: black;
+  margin: 10px 0px 0px 5px;
 }
