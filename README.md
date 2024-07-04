@@ -3,6 +3,7 @@
 ## 1주차 
 ### 자기소개 page 작성
 사용언어 : HTML5, CSS3
+
 사용폰트 : Nunito, Raleway, Lobster (google fonts 제공)
 
 ## 2주차
