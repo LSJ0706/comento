@@ -12,6 +12,10 @@
 
 사용언어 : HTML5, CSS3
 
+calculator1 : table 태그를 이용한 간단한 layout
+
+calculator2 : div 태그를 이용한 간단한 layout
+
 ## 3주차
 
 ## 4주차
