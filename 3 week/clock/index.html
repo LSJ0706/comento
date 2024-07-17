@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <title>Clock</title>
+  </head>
+  <body>
+    <div id="wrapper">
+      <div>
+        <!--100%에서 1초마다 1씩 줄어들기-->
+        <div id="battery">100%</div>
+      </div>
+
+      <div>
+        <!--0%가 되면 시계화면에서 시간이 표시되는 부분 검은색-->
+        <div>yy-mm-dd hh:mm:ss</div>
+        <!--내가 추가한 알람 최대 3개-->
+        <div>알람 현황</div>
+        <!--시 분 초 설정-->
+      </div>
+      <div id="alarm">
+        <div>hh:mm:ss</div>
+        <!--알람 추가 버튼-->
+        <button onclick="test()">추가</button>
+      </div>
+    </div>
+    <script type="text/javascript" src="./assets/js/script.js"></script>
+  </body>
+</html>
