@@ -1,3 +1,42 @@
 body {
   background-color: aliceblue;
+  margin: auto;
+  width: 50%;
+  min-width: 600px;
+  padding: 15px 20% 0 20%;
+}
+
+#battery {
+  display: flex;
+  justify-content: right;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+#clock {
+  display: flex;
+  justify-content: space-between;
+  width: 60%;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+#alarmList {
+  width: 40%;
+  text-align: center;
+  font-weight: bold;
+}
+#alarm {
+  display: flex;
+  justify-content: space-between;
+  width: 60%;
+}
+#alarm input {
+  box-sizing: border-box;
+  margin-right: 5px;
+  width: 50px;
 }

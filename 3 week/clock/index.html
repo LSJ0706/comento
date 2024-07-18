@@ -8,22 +8,27 @@
   </head>
   <body>
     <div id="wrapper">
-      <div>
-        <!--100%에서 1초마다 1씩 줄어들기-->
-        <div id="battery">100%</div>
-      </div>
+      <!--100%에서 1초마다 1씩 줄어들기-->
+      <div id="battery">100%</div>
 
-      <div>
+      <section class="content">
         <!--0%가 되면 시계화면에서 시간이 표시되는 부분 검은색-->
-        <div>yy-mm-dd hh:mm:ss</div>
+        <article id="clock">
+          <div id="date"></div>
+          <div id="time"></div>
+        </article>
         <!--내가 추가한 알람 최대 3개-->
-        <div>알람 현황</div>
+        <article id="alarmList">알람 현황</article>
         <!--시 분 초 설정-->
-      </div>
+      </section>
+
       <div id="alarm">
-        <div>hh:mm:ss</div>
+        <input type="number" value="13" />
+        <input type="number" value="13" />
+        <input type="number" value="13" />
+
         <!--알람 추가 버튼-->
-        <button onclick="test()">추가</button>
+        <button class="btn-">추가</button>
       </div>
     </div>
     <script type="text/javascript" src="./assets/js/script.js"></script>
