@@ -3,7 +3,7 @@ const battery = document.getElementById("battery");
 const clock = document.getElementById("clock");
 const date = document.getElementById("date");
 const time = document.getElementById("time");
-const alarm = document.getElementById("alarm");
+const timer = document.getElementById("timer");
 const alarmList = document.getElementById("alarmList");
 
 //constant variable
@@ -51,40 +51,77 @@ const outBattery = (clock, date, time) => {
 };
 
 //alarm function
-const validateTime = () => {};
+const validateInput = (input, idx) => {
+  const value = Number(input.value);
+  if (isNaN(value)) {
+    input.setCustomValidity("숫자만 입력할 수 있습니다.");
+  } else if (
+    (idx === 0 && (value < 0 || value > 23)) ||
+    (idx > 0 && (value < 0 || value > 59))
+  ) {
+    input.setCustomValidity(
+      "시간 범위를 입력하세요. HH는 0~23, MM과 SS는 0~59입니다."
+    );
+  } else {
+    input.setCustomValidity("");
+  }
+  input.reportValidity();
+};
+
+const initAlarmInputs = () => {
+  const inputFields = timer.getElementsByTagName("input");
+  Array.from(inputFields).forEach((input, idx) => {
+    input.addEventListener("input", () => validateInput(input, idx));
+  });
+};
 
 const addAlarm = () => {
-  const inputTime = alarm.getElementsByTagName("input");
-  const alarmTime = Array.from(inputTime).map((input) =>
+  const inputFields = timer.getElementsByTagName("input");
+  const alarmTime = Array.from(inputFields).map((input) =>
     getFormatTime(Number(input.value))
   );
 
-  if (alarmList.childElementCount > 3) {
+  if (Array.from(inputFields).some((input) => !input.checkValidity())) {
+    alert("유효하지 않은 입력입니다. 입력 값을 확인하세요.");
+    return;
+  }
+
+  if (alarmList.childElementCount >= 3) {
     alert("알람은 최대 3개까지만 설정할 수 있습니다.");
     return;
   }
 
   const newAlarm = document.createElement("div");
-  newAlarm.innerHTML = `${alarmTime[0]}:${alarmTime[1]}:${alarmTime[2]}`;
-
-  const alarmBtn = document.createElement("button");
-  alarmBtn.innerHTML = "제거";
+  newAlarm.innerHTML = `
+  <div class="alarm-time">${alarmTime[0]}:${alarmTime[1]}:${alarmTime[2]}</div>
+  <button class="btn-alarm-delete">제거</button>
+  `;
+  const alarmBtn = newAlarm.querySelector(".btn-alarm-delete");
   alarmBtn.addEventListener("click", () => {
     newAlarm.remove();
   });
 
   alarmList.appendChild(newAlarm);
-  newAlarm.appendChild(alarmBtn);
+
+  Array.from(inputFields).forEach((input) => (input.value = ""));
 };
 
 const checkAlarm = () => {
-  const cuurentTime = time.textContent.split(":").join("");
+  const currentTime = time.textContent.split(":").join("");
+
   const alarms = Array.from(alarmList.children).map((alarm) =>
-    alarm.firstChild.textContent.split(":").join("")
+    alarm.querySelector(".alarm-time").textContent.split(":").join("")
   );
-  if (alarms.includes(cuurentTime)) {
+
+  if (alarms.includes(currentTime)) {
     alert("알람 시간!");
+    // 알람이 울리면 해당 알람을 삭제합니다.
+    const alarmIndex = alarms.indexOf(currentTime);
+    if (alarmIndex !== -1) {
+      alarmList.children[alarmIndex].remove();
+    }
   }
+
   setTimeout(checkAlarm, 1000);
 };
 
@@ -93,4 +130,5 @@ document.addEventListener("DOMContentLoaded", () => {
   setBattery();
   setClock();
   checkAlarm();
+  initAlarmInputs();
 });
