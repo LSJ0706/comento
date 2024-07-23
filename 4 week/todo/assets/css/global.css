@@ -1,0 +1,29 @@
+.flex-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+body {
+  background-color: #e1e7fd;
+  padding-top: 50px;
+  min-width: 700px;
+}
+
+.btn {
+  display: block;
+  padding: 10px 20px;
+  background-color: #a868f1;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn:hover {
+  background: #b785f0;
+}
+h3 {
+  margin: auto;
+}

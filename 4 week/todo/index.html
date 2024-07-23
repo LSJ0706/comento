@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="./assets/css/global.css" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div class="wrapper flex-center">
+      <header class="flex-center">
+        <h1>What Todo?</h1>
+      </header>
+
+      <!--todoList 순서나옴 -> 
+      check기능 -> 완료된거 줄 긋기
+      제거, 수정
+      마우스로 클릭해서 옮기기-->
+      <div id="todoList" class="flex-center">
+        <span>test</span>
+      </div>
+      <!--todo 추가-->
+      <button class="btn btn__modal-open">Add Todo</button>
+    </div>
+
+    <!--modal-->
+    <div class="modal">
+      <div class="modal--popup flex-center">
+        <h3>Todo</h3>
+        <textarea placeholder="what`s todo?"></textarea>
+        <button class="btn btn__add">Add</button>
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript" src="./assets/js/script.js"></script>
+</html>
