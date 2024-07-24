@@ -1,0 +1,9 @@
+.div__todoList {
+  background-color: #ffffff;
+  width: 500px;
+  margin: 10px 0px 10px 0px;
+}
+
+#todoList {
+  min-height: 250px;
+}

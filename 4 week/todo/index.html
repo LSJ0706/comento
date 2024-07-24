@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="./assets/css/todo.css" />
+    <link rel="stylesheet" href="./assets/css/modal.css" />
     <link rel="stylesheet" href="./assets/css/global.css" />
     <title>Document</title>
   </head>
@@ -18,8 +19,8 @@
       check기능 -> 완료된거 줄 긋기
       제거, 수정
       마우스로 클릭해서 옮기기-->
-      <div id="todoList" class="flex-center">
-        <span>test</span>
+      <div class="div__todoList flex-center">
+        <ul id="todoList"></ul>
       </div>
       <!--todo 추가-->
       <button class="btn btn__modal-open">Add Todo</button>
@@ -27,12 +28,20 @@
 
     <!--modal-->
     <div class="modal">
-      <div class="modal--popup flex-center">
-        <h3>Todo</h3>
-        <textarea placeholder="what`s todo?"></textarea>
-        <button class="btn btn__add">Add</button>
+      <div class="modal__popup flex-center">
+        <div class="modal__title">
+          <h3>Todo</h3>
+          <button class="btn__modal-close"></button>
+        </div>
+        <form id="form__todo" class="flex-center">
+          <input id="todo" type="text" placeholder="what`s todo?"></input>
+          <button type="submit" class="btn btn__addTodoModal-close">Add</button>
+        </form>
+        <button onclick="test()">test</button>
       </div>
     </div>
+
   </body>
+  <script type="text/javascript" src="./assets/js/modal.js"></script>
   <script type="text/javascript" src="./assets/js/script.js"></script>
 </html>
