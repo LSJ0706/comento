@@ -1,0 +1,33 @@
+.div__todoList {
+  background-color: #ffffff;
+  width: 500px;
+  margin: 10px 0px 10px 0px;
+}
+
+#todoList {
+  width: 100%;
+  min-height: 250px;
+  margin: 0;
+  padding: 10px;
+  justify-content: flex-start;
+  font-size: 20px;
+}
+
+.checkbox__complete {
+  position: relative;
+  top: 2.5px;
+  margin: 0;
+  width: 20px;
+  height: 20px;
+}
+
+.img__delete {
+  width: 20px;
+  height: 20px;
+  position: relative;
+  top: 2.5px;
+}
+
+.todoContent.checked {
+  text-decoration: line-through;
+}
