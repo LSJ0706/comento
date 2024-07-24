@@ -1,70 +1,99 @@
-const todoForm = document.getElementById("form__todo");
-const todoList = document.getElementById("todoList");
-const todo = document.getElementById("todo");
-const todoAddBtn = document.querySelector(".btn.btn__addTodoModal-close");
-const currentTodoList = [];
+document.addEventListener("DOMContentLoaded", function () {
+  const todoForm = document.getElementById("form__todo");
+  const todoList = document.getElementById("todoList");
+  const todo = document.getElementById("todo");
+  const todoAddBtn = document.querySelector(".btn.btn__addTodoModal-close");
+  let currentTodoList = JSON.parse(sessionStorage.getItem("todoList")) || [];
 
-todoForm.addEventListener("submit", (event) => event.preventDefault());
+  const loadTodos = () => {
+    todoList.innerHTML = "";
+    currentTodoList.forEach((todo, index) => {
+      setTodoList(index, todo.content, todo.checked);
+    });
+  };
 
-todoAddBtn.addEventListener("click", (event) => {
-  addTodo();
-  event.preventDefault();
-  modal.classList.remove("on");
-});
+  //add Todo
+  const addTodo = () => {
+    const currentTodo = todo.value;
+    if (currentTodo) {
+      currentTodoList.push({
+        index: currentTodoList.length,
+        content: currentTodo,
+        checked: false,
+      });
+      updateSessionStorage();
+      setTodoList(currentTodoList.length - 1, currentTodo, currentTodo.checked);
+      todo.value = "";
+    } else {
+      alert("내용을 입력해주세요!");
+    }
+  };
 
-const addTodo = () => {
-  const currentTodo = todo.value;
-  console.log(currentTodo);
-  setTodoList(currentTodo);
-  todo.value = "";
-};
-
-const test = () => {
-  console.log(todo.textContent + " : test");
-};
-
-const setTodoList = (todo) => {
-  const li = document.createElement("li");
-  li.innerHTML = `
+  //set TodoList
+  const setTodoList = (index, todo, isChecked) => {
+    const li = document.createElement("li");
+    li.setAttribute("data-index", index);
+    li.innerHTML = `
     <div>
-      <span>${todo}</sapn>
-      <input class="checkbox__delete" type="checkbox"/>
+      <input class="checkbox__complete" type="checkbox" ${
+        isChecked ? "checked" : ""
+      }/>
+      <span class="todoContent ${isChecked ? "checked" : ""}">${todo}</sapn>
     </div>
-    <button><img src="./assets/img/delete_icon.png"  class="img__delete"/></button>
+    <img src="./assets/img/delete_icon.png"  class="img__delete"/>
   `;
-  todoList.appendChild(li);
-  console.log(li);
-};
-// const loadStorage = () => {
-//   const storage = loadStorage.getItem("todoList");
-//   if (storage != null) {
-//     const storageTodo = JSON.parse(storage);
-//     storageTodo.forEach((todo) => {
-//       const { text, checked } = todo;
-//     });
-//   }
-// };
+    todoList.appendChild(li);
+    const checkbox = li.querySelector(".checkbox__complete");
+    checkbox.addEventListener("change", checkTodo);
+    const deleteIcon = li.querySelector(".img__delete");
+    deleteIcon.addEventListener("click", deleteTodo);
+  };
 
-// const addAlarm = () => {
-//   const inputTime = alarm.getElementsByTagName("input");
-//   const alarmTime = Array.from(inputTime).map((input) =>
-//     getFormatTime(Number(input.value))
-//   );
+  //check Todo
+  const checkTodo = (event) => {
+    const check = event.target;
+    const textContent = check.nextElementSibling;
+    const idx = check.closest("li").getAttribute("data-index");
+    console.log(idx);
+    currentTodoList[idx].checked = check.checked;
+    updateSessionStorage();
 
-//   if (alarmList.childElementCount > 3) {
-//     alert("알람은 최대 3개까지만 설정할 수 있습니다.");
-//     return;
-//   }
+    if (check.checked) {
+      textContent.classList.add("checked");
+    } else {
+      textContent.classList.remove("checked");
+    }
+    console.log(currentTodoList);
+  };
 
-//   const newAlarm = document.createElement("div");
-//   newAlarm.innerHTML = `${alarmTime[0]}:${alarmTime[1]}:${alarmTime[2]}`;
+  //delete todo
+  const deleteTodo = (event) => {
+    const todo = event.target.closest("li");
+    const idx = todo.getAttribute("data-index");
+    currentTodoList = currentTodoList
+      .filter((todo) => todo.index != idx)
+      .map((todo) => {
+        if (idx < todo.index) {
+          todo.index--;
+        }
+        return todo;
+      });
 
-//   const alarmBtn = document.createElement("button");
-//   alarmBtn.innerHTML = "제거";
-//   alarmBtn.addEventListener("click", () => {
-//     newAlarm.remove();
-//   });
+    updateSessionStorage();
+    loadTodos();
+  };
 
-//   alarmList.appendChild(newAlarm);
-//   newAlarm.appendChild(alarmBtn);
-// };
+  //sessionStorage
+  const updateSessionStorage = () => {
+    sessionStorage.setItem("todoList", JSON.stringify(currentTodoList));
+  };
+  //add eventListener
+  todoForm.addEventListener("submit", (event) => event.preventDefault());
+  todoAddBtn.addEventListener("click", (event) => {
+    addTodo();
+    event.preventDefault();
+    modal.classList.remove("on");
+  });
+
+  loadTodos();
+});
