@@ -1,0 +1,45 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: auto;
+  margin-top: 100px;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 500px;
+  height: 600px;
+}
+
+#login-wrapper {
+  width: 400px;
+  height: 300px;
+}
+.error {
+  color: red;
+  font-size: 0.6em;
+  margin-top: 5px;
+}
+
+.input__group {
+  margin-bottom: 15px;
+}
+
+.input__group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.input__group input {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.flip-page {
+  width: 100%;
+  display: flex;
+  justify-content: right;
+}
