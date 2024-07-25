@@ -54,7 +54,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const check = event.target;
     const textContent = check.nextElementSibling;
     const idx = check.closest("li").getAttribute("data-index");
-    console.log(idx);
     currentTodoList[idx].checked = check.checked;
     updateSessionStorage();
 
@@ -63,7 +62,6 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
       textContent.classList.remove("checked");
     }
-    console.log(currentTodoList);
   };
 
   //delete todo
