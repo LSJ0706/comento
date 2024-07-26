@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const todoAddBtn = document.querySelector(".btn.btn__addTodoModal-close");
   let currentTodoList = JSON.parse(sessionStorage.getItem("todoList")) || [];
 
-  const loadTodos = () => {
+  const loadTodo = () => {
     todoList.innerHTML = "";
     currentTodoList.forEach((todo, index) => {
       setTodoList(index, todo.content, todo.checked);
@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
 
     updateSessionStorage();
-    loadTodos();
+    loadTodo();
   };
 
   //sessionStorage
@@ -93,5 +93,5 @@ document.addEventListener("DOMContentLoaded", function () {
     modal.classList.remove("on");
   });
 
-  loadTodos();
+  loadTodo();
 });
